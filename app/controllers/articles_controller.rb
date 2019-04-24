@@ -1,6 +1,10 @@
 class ArticlesController < ApplicationController
   include ArticlesHelper
 
+  # new, create, edit, update and destroy require authentication
+  before_action :require_login, except: [:index, :show]
+
+  
   def index
     @articles = Article.all
   end
